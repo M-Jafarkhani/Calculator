@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     var ctx : CalculatorContext!
-
+    var resetValue : Bool = false
+    
     @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
@@ -22,12 +23,20 @@ class ViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender.tag {
             case ButtonType.zero.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
             break
             
             case ButtonType.one.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -35,6 +44,10 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.two.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -42,6 +55,10 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.three.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -49,6 +66,10 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.four.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -56,6 +77,10 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.five.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -63,6 +88,10 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.six.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -70,6 +99,10 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.seven.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -77,13 +110,21 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.eight.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
-                        ctx.CurrentValue *= 10
-                    }
+                    ctx.CurrentValue *= 10
+                }
                 ctx.CurrentValue += 8
             break
             
             case ButtonType.nine.rawValue :
+                if resetValue {
+                    ctx.CurrentValue = 0
+                    resetValue = false
+                }
                 if (ctx.CurrentValue != 0) {
                     ctx.CurrentValue *= 10
                 }
@@ -91,15 +132,32 @@ class ViewController: UIViewController {
             break
             
             case ButtonType.plus.rawValue :
-
+                ctx.Evaluate(opr: Addition())
+                resetValue = true
+            break
+            
+            case ButtonType.minus.rawValue :
+                ctx.Evaluate(opr: Subtraction())
+                resetValue = true
+            break
+            
+            case ButtonType.multiply.rawValue :
+                ctx.Evaluate(opr: Multiplication())
+                resetValue = true
+            break
+            
+            case ButtonType.division.rawValue :
+                ctx.Evaluate(opr: Division())
+                resetValue = true
+            break
+            
+            case ButtonType.equal.rawValue :
+                ctx.Calculate()
             break
             
             case ButtonType.clear.rawValue :
                 Clear()
             break
-            
-            case ButtonType.clear.rawValue :
-                print("0")
             
             default :
                 break

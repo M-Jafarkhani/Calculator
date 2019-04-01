@@ -8,13 +8,54 @@
 
 import Foundation
 
-class AddOperation : OperationProtocol {
+class Addition : OperationProtocol {
     func Execute(ctx: CalculatorContext) -> Double {
         let a = ctx.CurrentValue
-        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 1)
+        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
         {
             guard let b = ctx.NumbersHistory.last else { return 0 }
             return a + b
+        }
+        return a
+    }
+}
+
+class Subtraction : OperationProtocol {
+    func Execute(ctx: CalculatorContext) -> Double {
+        let a = ctx.CurrentValue
+        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        {
+            guard let b = ctx.NumbersHistory.last else { return 0 }
+            return b - a
+        }
+        return a
+    }
+}
+
+class Multiplication : OperationProtocol {
+    func Execute(ctx: CalculatorContext) -> Double {
+        let a = ctx.CurrentValue
+        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        {
+            guard let b = ctx.NumbersHistory.last else { return 0 }
+            return a * b
+        }
+        return a
+    }
+}
+
+class Division : OperationProtocol {
+    func Execute(ctx: CalculatorContext) -> Double {
+        let a = ctx.CurrentValue
+        if a == 0 {
+            ProgressHUD.showError("Division by zero.")
+            return 0
+        }
+        
+        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        {
+            guard let b = ctx.NumbersHistory.last else { return 1 }
+            return b / a
         }
         return a
     }

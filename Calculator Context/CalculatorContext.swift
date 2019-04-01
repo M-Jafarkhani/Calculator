@@ -17,6 +17,19 @@ class CalculatorContext{
     init() {
     }
     
+    func Calculate(){
+        if CurrentOperation == nil {
+            return
+        }
+        
+        let val : Double = CurrentOperation.Execute(ctx: self)
+        NumbersHistory.append(CurrentValue)
+        CurrentValue = val
+        NumbersHistory.removeAll(keepingCapacity: false)
+        OperationsHistory.removeAll(keepingCapacity: false)
+        CurrentOperation = nil
+    }
+    
     func Evaluate(opr : OperationProtocol){
         CurrentOperation = opr
         OperationsHistory.append(opr)

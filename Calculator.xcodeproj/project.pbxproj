@@ -16,6 +16,8 @@
 		BA324F5422525BC20074D1B7 /* CalculatorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA324F5322525BC20074D1B7 /* CalculatorContext.swift */; };
 		BA324F5622525D110074D1B7 /* OperationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA324F5522525D110074D1B7 /* OperationProtocol.swift */; };
 		BA324F5822525F810074D1B7 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA324F5722525F810074D1B7 /* Operations.swift */; };
+		BA324F5E225288500074D1B7 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA324F5B225288500074D1B7 /* ProgressHUD.bundle */; };
+		BA324F5F225288500074D1B7 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BA324F5D225288500074D1B7 /* ProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,10 @@
 		BA324F5322525BC20074D1B7 /* CalculatorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorContext.swift; sourceTree = "<group>"; };
 		BA324F5522525D110074D1B7 /* OperationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProtocol.swift; sourceTree = "<group>"; };
 		BA324F5722525F810074D1B7 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
+		BA324F5A2252884F0074D1B7 /* Calculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calculator-Bridging-Header.h"; sourceTree = "<group>"; };
+		BA324F5B225288500074D1B7 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		BA324F5C225288500074D1B7 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		BA324F5D225288500074D1B7 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +52,7 @@
 		BA324F32225233C80074D1B7 = {
 			isa = PBXGroup;
 			children = (
+				BA324F59225288320074D1B7 /* External Resources */,
 				BA324F5222525BA00074D1B7 /* Calculator Context */,
 				BA324F3D225233C80074D1B7 /* Calculator */,
 				BA324F3C225233C80074D1B7 /* Products */,
@@ -84,6 +91,17 @@
 			path = "Calculator Context";
 			sourceTree = "<group>";
 		};
+		BA324F59225288320074D1B7 /* External Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA324F5B225288500074D1B7 /* ProgressHUD.bundle */,
+				BA324F5C225288500074D1B7 /* ProgressHUD.h */,
+				BA324F5D225288500074D1B7 /* ProgressHUD.m */,
+				BA324F5A2252884F0074D1B7 /* Calculator-Bridging-Header.h */,
+			);
+			path = "External Resources";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,6 +134,7 @@
 				TargetAttributes = {
 					BA324F3A225233C80074D1B7 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -142,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA324F5E225288500074D1B7 /* ProgressHUD.bundle in Resources */,
 				BA324F49225233C80074D1B7 /* LaunchScreen.storyboard in Resources */,
 				BA324F46225233C80074D1B7 /* Assets.xcassets in Resources */,
 				BA324F44225233C80074D1B7 /* Main.storyboard in Resources */,
@@ -158,6 +178,7 @@
 				BA324F41225233C80074D1B7 /* ViewController.swift in Sources */,
 				BA324F5422525BC20074D1B7 /* CalculatorContext.swift in Sources */,
 				BA324F51225252C70074D1B7 /* Enumerations.swift in Sources */,
+				BA324F5F225288500074D1B7 /* ProgressHUD.m in Sources */,
 				BA324F5822525F810074D1B7 /* Operations.swift in Sources */,
 				BA324F5622525D110074D1B7 /* OperationProtocol.swift in Sources */,
 				BA324F3F225233C80074D1B7 /* AppDelegate.swift in Sources */,
@@ -306,6 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -314,6 +336,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.golrang.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "External Resources/Calculator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -323,6 +347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -331,6 +356,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.golrang.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "External Resources/Calculator-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
