@@ -1,4 +1,4 @@
 # Calculator
 A calculator app written in Swift
 
-(/Images/Screenshot.png)
+![Sample image](https://github.com/M-Jafarkhani/Calculator/blob/master/Images/Screenshot.png)
