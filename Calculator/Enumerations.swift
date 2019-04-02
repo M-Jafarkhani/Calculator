@@ -8,23 +8,23 @@
 
 enum ButtonType : Int
 {
-    case zero = 1
-    case decimal = 2
-    case equal = 3
-    case one = 4
-    case two = 5
-    case three = 6
-    case plus = 7
-    case four = 8
-    case five = 9
-    case six = 10
-    case minus = 11
-    case seven = 12
-    case eight = 13
-    case nine = 14
-    case multiply = 15
-    case clear = 16
-    case plusMinus = 17
-    case percent = 18
-    case division = 19
+    case zero = 0
+    case decimal = 10
+    case equal = 11
+    case one = 1
+    case two = 2
+    case three = 3
+    case plus = 12
+    case four = 4
+    case five = 5
+    case six = 6
+    case minus = 13
+    case seven = 7
+    case eight = 8
+    case nine = 9
+    case multiply = 14
+    case clear = 15
+    case plusMinus = 16
+    case percent = 17
+    case division = 18
 }

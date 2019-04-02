@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var ctx : CalculatorContext!
-    var resetValue : Bool = false
+    var resetNumber : Bool = false
     var decimalSymbolIsPressed : Bool = false
     var digitsCountAfterDecimalSymbol : Int = 1
     
@@ -25,171 +25,26 @@ class ViewController: UIViewController {
 
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender.tag {
-            case ButtonType.zero.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
+            case ButtonType.zero.rawValue ,
+                 ButtonType.one.rawValue ,
+                 ButtonType.two.rawValue ,
+                 ButtonType.three.rawValue ,
+                 ButtonType.four.rawValue ,
+                 ButtonType.five.rawValue ,
+                 ButtonType.six.rawValue ,
+                 ButtonType.seven.rawValue ,
+                 ButtonType.eight.rawValue ,
+                 ButtonType.nine.rawValue :
+                if resetNumber {
+                    ResetNumberEvaluation()
                 }
                 if decimalSymbolIsPressed {
+                    ctx.CurrentValue += (Double(sender.tag) * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
                     digitsCountAfterDecimalSymbol += 1
                 }
                 else {
                     ctx.CurrentValue *= 10
-                }
-            break
-            
-            case ButtonType.one.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += pow(10, Double(-1 * digitsCountAfterDecimalSymbol))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 1
-                }
-            break
-            
-            case ButtonType.two.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (2 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 2
-                }
-            break
-            
-            case ButtonType.three.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (3 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 3
-                }
-            break
-            
-            case ButtonType.four.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (4 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 4
-                }
-            break
-            
-            case ButtonType.five.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (5 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 5
-                }
-            break
-            
-            case ButtonType.six.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (6 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 6
-                }
-            break
-            
-            case ButtonType.seven.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (7 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 7
-                }
-            break
-            
-            case ButtonType.eight.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (8 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 8
-                }
-            break
-            
-            case ButtonType.nine.rawValue :
-                if resetValue {
-                    ctx.CurrentValue = 0
-                    resetValue = false
-                    decimalSymbolIsPressed = false
-                    digitsCountAfterDecimalSymbol = 1
-                }
-                if decimalSymbolIsPressed {
-                    ctx.CurrentValue += (9 * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
-                    digitsCountAfterDecimalSymbol += 1
-                }
-                else {
-                    ctx.CurrentValue *= 10
-                    ctx.CurrentValue += 9
+                    ctx.CurrentValue += Double(sender.tag)
                 }
             break
             
@@ -203,28 +58,31 @@ class ViewController: UIViewController {
             
             case ButtonType.plus.rawValue :
                 ctx.Evaluate(opr: Addition())
-                resetValue = true
+                resetNumber = true
             break
             
             case ButtonType.minus.rawValue :
                 ctx.Evaluate(opr: Subtraction())
-                resetValue = true
+                resetNumber = true
             break
             
             case ButtonType.multiply.rawValue :
                 ctx.Evaluate(opr: Multiplication())
-                resetValue = true
+                resetNumber = true
             break
             
             case ButtonType.division.rawValue :
                 ctx.Evaluate(opr: Division())
-                resetValue = true
+                resetNumber = true
             break
             
             case ButtonType.equal.rawValue :
                 ctx.Calculate()
-                decimalSymbolIsPressed = false
-                digitsCountAfterDecimalSymbol = 1
+                ResetDecimalSymbolEvaluation()
+            break
+            
+            case ButtonType.plusMinus.rawValue :
+                ctx.CurrentValue *= -1
             break
             
             case ButtonType.clear.rawValue :
@@ -238,10 +96,20 @@ class ViewController: UIViewController {
         UpdateResultLabel()
     }
     
-    func Clear(){
-        ctx.Reset()
+    func ResetNumberEvaluation() {
+        ctx.CurrentValue = 0
+        resetNumber = false
+        ResetDecimalSymbolEvaluation()
+    }
+    
+    func ResetDecimalSymbolEvaluation() {
         decimalSymbolIsPressed = false
         digitsCountAfterDecimalSymbol = 1
+    }
+    
+    func Clear(){
+        ctx.Reset()
+        ResetDecimalSymbolEvaluation()
     }
     
     func UpdateResultLabel() {
@@ -249,7 +117,6 @@ class ViewController: UIViewController {
         currencyFormatter.alwaysShowsDecimalSeparator = true
         currencyFormatter.maximumFractionDigits = 15
         currencyFormatter.numberStyle = .decimal
-        print(ctx.CurrentValue)
         if (floor(ctx.CurrentValue) == ctx.CurrentValue) {
             resultLabel.text = currencyFormatter.string(from: NSNumber(value: Int(ctx.CurrentValue)))
         }
