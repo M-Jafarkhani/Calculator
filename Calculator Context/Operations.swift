@@ -11,7 +11,7 @@ import Foundation
 class Addition : OperationProtocol {
     func Execute(ctx: CalculatorContext) -> Double {
         let a = ctx.CurrentValue
-        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
             guard let b = ctx.NumbersHistory.last else { return 0 }
             return a + b
@@ -23,7 +23,7 @@ class Addition : OperationProtocol {
 class Subtraction : OperationProtocol {
     func Execute(ctx: CalculatorContext) -> Double {
         let a = ctx.CurrentValue
-        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
             guard let b = ctx.NumbersHistory.last else { return 0 }
             return b - a
@@ -35,7 +35,7 @@ class Subtraction : OperationProtocol {
 class Multiplication : OperationProtocol {
     func Execute(ctx: CalculatorContext) -> Double {
         let a = ctx.CurrentValue
-        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
             guard let b = ctx.NumbersHistory.last else { return 0 }
             return a * b
@@ -47,13 +47,12 @@ class Multiplication : OperationProtocol {
 class Division : OperationProtocol {
     func Execute(ctx: CalculatorContext) -> Double {
         let a = ctx.CurrentValue
-        if a == 0 {
-            ProgressHUD.showError("Division by zero.")
-            return 0
-        }
-        
-        if (ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0)
+        if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
+            if a == 0 {
+                ProgressHUD.showError("Division by zero.")
+                return 0
+            }
             guard let b = ctx.NumbersHistory.last else { return 1 }
             return b / a
         }

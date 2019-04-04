@@ -14,13 +14,14 @@ class ViewController: UIViewController {
     var resetNumber : Bool = false
     var decimalSymbolIsPressed : Bool = false
     var digitsCountAfterDecimalSymbol : Int = 1
+    var zeroPressedCountAfterDecimalSymbol : Int = 0
     
     @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ctx = CalculatorContext()
-        UpdateResultLabel()
+        UpdateResultLabel(tag: ButtonType.clear.rawValue)
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -39,6 +40,12 @@ class ViewController: UIViewController {
                     ResetNumberEvaluation()
                 }
                 if decimalSymbolIsPressed {
+                    if sender.tag == ButtonType.zero.rawValue {
+                        zeroPressedCountAfterDecimalSymbol += 1
+                    }
+                    else {
+                        zeroPressedCountAfterDecimalSymbol = 0
+                    }
                     ctx.CurrentValue += (Double(sender.tag) * pow(10, Double(-1 * digitsCountAfterDecimalSymbol)))
                     digitsCountAfterDecimalSymbol += 1
                 }
@@ -93,7 +100,7 @@ class ViewController: UIViewController {
                 break
         }
         
-        UpdateResultLabel()
+        UpdateResultLabel(tag: sender.tag)
     }
     
     func ResetNumberEvaluation() {
@@ -105,6 +112,7 @@ class ViewController: UIViewController {
     func ResetDecimalSymbolEvaluation() {
         decimalSymbolIsPressed = false
         digitsCountAfterDecimalSymbol = 1
+        zeroPressedCountAfterDecimalSymbol = 0
     }
     
     func Clear(){
@@ -112,16 +120,19 @@ class ViewController: UIViewController {
         ResetDecimalSymbolEvaluation()
     }
     
-    func UpdateResultLabel() {
+    func UpdateResultLabel(tag: Int) {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.alwaysShowsDecimalSeparator = true
         currencyFormatter.maximumFractionDigits = 15
         currencyFormatter.numberStyle = .decimal
-        if (floor(ctx.CurrentValue) == ctx.CurrentValue) {
+        if floor(ctx.CurrentValue) == ctx.CurrentValue {
             resultLabel.text = currencyFormatter.string(from: NSNumber(value: Int(ctx.CurrentValue)))
         }
         else {
             resultLabel.text = currencyFormatter.string(from: NSNumber(value: ctx.CurrentValue))
+        }
+        if tag == ButtonType.zero.rawValue && decimalSymbolIsPressed {
+            resultLabel.text!.append(String(repeating: "0", count: zeroPressedCountAfterDecimalSymbol))
         }
     }
 }
