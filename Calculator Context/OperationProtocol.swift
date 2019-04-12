@@ -8,6 +8,10 @@
 
 import Foundation
 
+
+
+
+
 protocol OperationProtocol
 {
     func Execute(ctx : CalculatorContext) -> Double
