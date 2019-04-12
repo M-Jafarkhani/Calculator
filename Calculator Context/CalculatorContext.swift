@@ -15,6 +15,8 @@ class CalculatorContext{
     var CurrentOperation : OperationProtocol!
     
     init() {
+        
+        
     }
     
     func Calculate(){
