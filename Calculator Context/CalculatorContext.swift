@@ -8,42 +8,57 @@
 
 import Foundation
 
-class CalculatorContext{
+class CalculatorContext
+{
     var NumbersHistory : Array<Double>! = []
     var CurrentValue : Double = 0.0
-    var OperationsHistory : Array<OperationProtocol> = []
     var CurrentOperation : OperationProtocol!
     
-    init() {
-        
+    init()
+    {
          
     }
     
-    func Calculate(){
-        if CurrentOperation == nil {
+    func Calculate() throws -> ()
+    {
+        if CurrentOperation == nil
+        {
             return
         }
         
-        let val : Double = CurrentOperation.Execute(ctx: self)
-        NumbersHistory.append(CurrentValue)
-        CurrentValue = val
-        NumbersHistory.removeAll(keepingCapacity: false)
-        OperationsHistory.removeAll(keepingCapacity: false)
-        CurrentOperation = nil
+        do
+        {
+            let val : Double = try CurrentOperation.Execute(ctx: self)
+            NumbersHistory.append(CurrentValue)
+            CurrentValue = val
+            NumbersHistory.removeAll(keepingCapacity: false)
+            CurrentOperation = nil
+        }
+        catch
+        {
+            throw error
+        }
     }
     
-    func Evaluate(opr : OperationProtocol){
+    func Evaluate(opr : OperationProtocol) throws -> ()
+    {
         CurrentOperation = opr
-        OperationsHistory.append(opr)
-        let val : Double = CurrentOperation.Execute(ctx: self)
-        NumbersHistory.append(CurrentValue)
-        CurrentValue = val
+        do
+        {
+            let val : Double = try CurrentOperation.Execute(ctx: self)
+            NumbersHistory.append(CurrentValue)
+            CurrentValue = val
+        }
+        catch
+        {
+            throw error
+        }
     }
     
-    func Reset() {
+    func Reset() -> ()
+    {
         NumbersHistory.removeAll(keepingCapacity: false)
         CurrentValue = 0.0
-        OperationsHistory.removeAll(keepingCapacity: false)
         CurrentOperation = nil
     }
 }

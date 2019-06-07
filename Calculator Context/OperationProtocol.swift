@@ -8,11 +8,7 @@
 
 import Foundation
 
-
-
-
-
 protocol OperationProtocol
 {
-    func Execute(ctx : CalculatorContext) -> Double
+    func Execute(ctx : CalculatorContext) throws -> Double
 }

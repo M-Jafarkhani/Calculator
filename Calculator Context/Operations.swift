@@ -8,8 +8,10 @@
 
 import Foundation
 
-class Addition : OperationProtocol {
-    func Execute(ctx: CalculatorContext) -> Double {
+class Addition : OperationProtocol
+{
+    func Execute(ctx: CalculatorContext) throws -> Double
+    {
         let a = ctx.CurrentValue
         if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
@@ -20,8 +22,10 @@ class Addition : OperationProtocol {
     }
 }
 
-class Subtraction : OperationProtocol {
-    func Execute(ctx: CalculatorContext) -> Double {
+class Subtraction : OperationProtocol
+{
+    func Execute(ctx: CalculatorContext) throws -> Double
+    {
         let a = ctx.CurrentValue
         if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
@@ -32,8 +36,10 @@ class Subtraction : OperationProtocol {
     }
 }
 
-class Multiplication : OperationProtocol {
-    func Execute(ctx: CalculatorContext) -> Double {
+class Multiplication : OperationProtocol
+{
+    func Execute(ctx: CalculatorContext) throws -> Double
+    {
         let a = ctx.CurrentValue
         if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
@@ -44,14 +50,16 @@ class Multiplication : OperationProtocol {
     }
 }
 
-class Division : OperationProtocol {
-    func Execute(ctx: CalculatorContext) -> Double {
+class Division : OperationProtocol
+{
+    func Execute(ctx: CalculatorContext) throws -> Double
+    {
         let a = ctx.CurrentValue
         if ctx.NumbersHistory != nil && ctx.NumbersHistory.count > 0
         {
-            if a == 0 {
-                ProgressHUD.showError("Division by zero.")
-                return 0
+            if a == 0
+            {
+                throw CalculationError.divisionByZero
             }
             guard let b = ctx.NumbersHistory.last else { return 1 }
             return b / a
