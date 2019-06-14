@@ -18,7 +18,6 @@
 		BA324F5822525F810074D1B7 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA324F5722525F810074D1B7 /* Operations.swift */; };
 		BA324F5E225288500074D1B7 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA324F5B225288500074D1B7 /* ProgressHUD.bundle */; };
 		BA324F5F225288500074D1B7 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BA324F5D225288500074D1B7 /* ProgressHUD.m */; };
-		BA7FBA1722AAAD66001D6458 /* CalculationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7FBA1622AAAD66001D6458 /* CalculationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		BA324F5B225288500074D1B7 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		BA324F5C225288500074D1B7 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		BA324F5D225288500074D1B7 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
-		BA7FBA1622AAAD66001D6458 /* CalculationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +87,6 @@
 				BA324F5322525BC20074D1B7 /* CalculatorContext.swift */,
 				BA324F5522525D110074D1B7 /* OperationProtocol.swift */,
 				BA324F5722525F810074D1B7 /* Operations.swift */,
-				BA7FBA1622AAAD66001D6458 /* CalculationError.swift */,
 			);
 			path = "Calculator Context";
 			sourceTree = "<group>";
@@ -183,7 +180,6 @@
 				BA324F51225252C70074D1B7 /* Enumerations.swift in Sources */,
 				BA324F5F225288500074D1B7 /* ProgressHUD.m in Sources */,
 				BA324F5822525F810074D1B7 /* Operations.swift in Sources */,
-				BA7FBA1722AAAD66001D6458 /* CalculationError.swift in Sources */,
 				BA324F5622525D110074D1B7 /* OperationProtocol.swift in Sources */,
 				BA324F3F225233C80074D1B7 /* AppDelegate.swift in Sources */,
 			);

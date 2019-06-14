@@ -6,7 +6,7 @@
 //  Copyright © 2019 Mahdi Jafarkhani. All rights reserved.
 //
 
-enum ButtonType : Int
+public enum ButtonType : Int
 {
     case zero = 0
     case decimal = 10
@@ -27,4 +27,10 @@ enum ButtonType : Int
     case plusMinus = 16
     case percent = 17
     case division = 18
+}
+
+public enum CalculationError : Error
+{
+    case unspecified
+    case divisionByZero
 }
