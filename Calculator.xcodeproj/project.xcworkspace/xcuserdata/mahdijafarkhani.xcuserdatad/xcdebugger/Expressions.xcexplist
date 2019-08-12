@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.UpdateResultLabel(tag:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "resultLabel.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.numberWillBeTruncated(numberString:number:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "resultLabel.bounds.size.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
